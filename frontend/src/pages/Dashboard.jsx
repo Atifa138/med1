@@ -18,7 +18,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (!user) return;
 
-    fetch(`http://127.0.0.1:8000/dashboard/${user.id}`)
+    fetch(`https://med1-production.up.railway.app/dashboard/${user.id}`)
       .then((res) => res.json())
       .then((data) => {
         const reports = data.recent_reports.map((report) => ({

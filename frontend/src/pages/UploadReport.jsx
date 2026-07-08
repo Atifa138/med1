@@ -32,7 +32,7 @@ export default function UploadReport() {
     formData.append("file", file);
     formData.append("username", user.username);
 
-    const uploadRes = await fetch("http://127.0.0.1:8000/upload/report", {
+    const uploadRes = await fetch("https://med1-production.up.railway.app/upload/report", {
       method: "POST",
       body: formData,
     });
@@ -45,7 +45,7 @@ export default function UploadReport() {
 
     console.log(uploadData);
 
-    const analyzeRes = await fetch("http://127.0.0.1:8000/analyze/", {
+    const analyzeRes = await fetch("https://med1-production.up.railway.app/analyze/", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

@@ -106,4 +106,12 @@ class RAGService:
 
 # Module-level singleton so routers/other services can share one vector
 # store connection instead of each opening their own.
-rag_service = RAGService()
+_rag_service = None
+
+def get_rag_service():
+    global _rag_service
+
+    if _rag_service is None:
+        _rag_service = RAGService()
+
+    return _rag_service

@@ -66,7 +66,7 @@ app.add_middleware(
 
 # --- Routers ---
 app.include_router(upload.router)
-#app.include_router(analyze.router)
+app.include_router(analyze.router)
 app.include_router(history.router)
 app.include_router(auth.router)
 app.include_router(dashboard.router)

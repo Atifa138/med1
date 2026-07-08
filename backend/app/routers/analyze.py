@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models.report import Report
 from app.schemas.report import AnalyzeRequest, AnalyzeResponse
-from app.services.rag_service import rag_service
+from app.services.rag_service import get_rag_service
 from app.ai.crew import run_medical_analysis
 
 router = APIRouter(
@@ -18,6 +18,7 @@ async def analyze_report(
     request: AnalyzeRequest,
     db: Session = Depends(get_db),
 ):
+    rag_service = get_rag_service()
 
     documents = rag_service.query(
     query="""

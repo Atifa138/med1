@@ -22,7 +22,7 @@ from app.database import get_db
 from app.models.report import Report
 from app.models.user import User
 from app.schemas.upload import UploadReportResponse
-from app.services.rag_service import rag_service
+from app.services.rag_service import get_rag_service
 from app.utils.file_storage import save_upload_file
 
 
@@ -101,6 +101,7 @@ async def upload_report(
     # Index PDF into ChromaDB
     # ----------------------------------------------------
     try:
+        rag_service = get_rag_service()
         ingestion_result = rag_service.ingest_pdf(
             file_path=saved_path,
             metadata={

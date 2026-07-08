@@ -15,7 +15,7 @@ export default function History() {
   useEffect(() => {
     if (!user?.id) return;
 
-    fetch(`http://127.0.0.1:8000/history?user_id=${user.id}`)
+    fetch(`https://med1-production.up.railway.app/history?user_id=${user.id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("History API:", data);
