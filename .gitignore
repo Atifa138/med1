@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment
+.env
+*.env
+
+# Database
+*.db
+*.sqlite3
+
+# Uploads
+backend/uploads/
+uploads/
+
+# Chroma
+backend/app/rag/chroma_store/
+backend/backend/
+
+# Virtual environments
+venv/
+.venv/
+
+# Logs
+*.log
+
+# Node
+node_modules/
+
+# Build
+dist/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
