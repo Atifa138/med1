@@ -15,10 +15,16 @@ export default function History() {
   useEffect(() => {
     if (!user?.id) return;
 
+    console.log("Current user:", user);
+    console.log(
+      "History URL:",
+      `https://med1-production.up.railway.app/history?user_id=${user.id}`
+    );
+
     fetch(`https://med1-production.up.railway.app/history?user_id=${user.id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log("History API:", data);
+        console.log("History API Response:", data);
 
         const mapped = data.map((report) => ({
           id: report.id,
@@ -26,7 +32,6 @@ export default function History() {
           type: "Medical Report",
           date: report.created_at,
           status: report.status,
-
           riskLevel: report.risk
             ? report.risk.toLowerCase().includes("high")
               ? "High"
@@ -34,7 +39,6 @@ export default function History() {
               ? "Moderate"
               : "Low"
             : "Low",
-
           answer: report.answer,
           risk: report.risk,
           explanation: report.explanation,
@@ -106,10 +110,7 @@ export default function History() {
       {filtered.length > 0 ? (
         <div className="space-y-3">
           {filtered.map((report) => (
-            <HistoryCard
-              key={report.id}
-              report={report}
-            />
+            <HistoryCard key={report.id} report={report} />
           ))}
         </div>
       ) : (
